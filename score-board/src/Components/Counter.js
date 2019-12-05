@@ -22,10 +22,27 @@ export class Counter extends Component {
     });
   };
 
-  increaseTwo =()=>{
-      this.setState({
-          strikes: this.state.strikes + 2
-      })
+  foulControl =()=>{
+    if (this.state.strikes === 0) {
+        //  block of code to be executed if condition1 is true
+        this.setState({
+            strikes: this.state.strikes + 1
+        })
+      } else if (this.state.strikes === 1) {
+        //  block of code to be executed if the condition1 is false and condition2 is true
+        this.setState({
+            strikes: this.state.strikes + 1
+        })
+
+      } else if (this.state.strikes === 2){
+        //  block of code to be executed if the condition1 is false and condition2 is false
+        this.setState({
+            strikes: this.state.strikes + 0
+        })
+      }
+    //   this.setState({
+    //       strikes: this.state.strikes + 2
+    //   })
   }
 
   render() {
@@ -47,7 +64,7 @@ export class Counter extends Component {
         >
           STRIKES
         </button>
-        <button onClick={()=>{this.increaseTwo()}}>FOUL</button>
+        <button onClick={()=>{this.foulControl()}}>FOUL</button>
         <button>HIT</button>
       </div>
     );
